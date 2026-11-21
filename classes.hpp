@@ -2,28 +2,42 @@
 #define CLASSES_HPP
 
 #include <vector>
+#include <string>
+
 
 class BirthDate{
     protected:
         int dia;
         int mes;
         int ano;
+
+    public:
+        void setDia(int d);
+        void setMes(int m);
+        void setAno(int a);
+
 };
 
 class Client {
     private:
         int id;
-        std::vector<int> cpf;
+        std::string cpf;
         std::string nome;
         std::string sexo;
-        std::vector<int> telefone;
+        std::string telefone;
         BirthDate dataNascimento;
 
     public:
-        void setCpf(std::vector<int>);
-        std::vector<int> getCpf() const;
-        void setNome(std::string);
-        std::string getNome() const;
+        void setCpf(std::string numero);
+        std::string getCpf(void) const;
+        void setNome(std::string n);
+        std::string getNome(void) const;
+        void setSexo(std::string sex);
+        std::string getSexo(void) const;
+        void setTelefone(std::string tel);
+        std::string getTelefone(void) const;
+        void setDtNascimento(int d, int m, int a);
+        //BirthDate::getDtNascimento(void) const;
 };
 
 class Product {
