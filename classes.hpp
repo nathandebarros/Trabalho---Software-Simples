@@ -4,19 +4,14 @@
 #include <vector>
 #include <string>
 
+int mes;
+int ano;
 
-class BirthDate{
-    protected:
-        int dia;
-        int mes;
-        int ano;
-
-    public:
-        void setDia(int d);
-        void setMes(int m);
-        void setAno(int a);
-
-};
+typedef struct{
+    int dia;
+    int mes;
+    int ano;
+} Date;
 
 class Client {
     private:
@@ -25,7 +20,7 @@ class Client {
         std::string nome;
         std::string sexo;
         std::string telefone;
-        BirthDate dataNascimento;
+        Date dataNascimento;
 
     public:
         void setCpf(std::string numero);
@@ -37,7 +32,17 @@ class Client {
         void setTelefone(std::string tel);
         std::string getTelefone(void) const;
         void setDtNascimento(int d, int m, int a);
+        void setDtNascimento(Date dt);
+        Date getDtNascimento(void) const;
         //BirthDate::getDtNascimento(void) const;
+
+        Client(std::string c_cpf, std::string c_nome, std::string c_sexo, std::string c_telefone, Date c_dtnas){
+            setCpf(c_cpf);
+            setNome(c_nome);
+            setSexo(c_sexo);
+            setTelefone(c_telefone);
+            setDtNascimento(c_dtnas);
+        }
 };
 
 class Product {
@@ -55,8 +60,8 @@ class Software {
         std::vector<Product> produtos;
 
     public: 
-        void cadastrar(Client cliente);
-        void cadastrar(Product produto);
+        bool cadastrar(Client cliente);
+        bool cadastrar(Product produto);
 };
 
 #endif
